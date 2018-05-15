@@ -44,7 +44,7 @@ request({
 async function asyncDownload(board, imageList) {
 	console.log(`Found ${imageList.length} images, downloading to ${dir} !`);
 	for (let i = 0; i < imageList.length; i++) {
-		const imgPath = dir+'/'+ imageList[i];
+		let imgPath = dir+'/'+ imageList[i];
 		if (fs.existsSync(imgPath)) {
 			console.log(`File ${imageList[i]} exists, skipping... (${i+1}/${imageList.length})`);
 			continue;
