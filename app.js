@@ -1,8 +1,18 @@
-var fs = require('fs');
-var request = require('request');
-var mkdirp = require('mkdirp');
-var program = require('commander');
-
+try {
+    var fs = require('fs');
+	var request = require('request');
+	var mkdirp = require('mkdirp');
+	var program = require('commander');
+}
+catch (e) {
+    if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
+        console.log(`Couldn't find one or more required modules. Please run "npm install"`);
+		process.exit(1);
+    } else {
+        throw e;
+		process.exit(1);
+	}
+}
 
 program
   .description('An application for downloading all images from 4chan thread')
@@ -31,10 +41,10 @@ request({
 	mkdirp(dir, function(err) { 
 		if (err) {
 			console.log(`Error while creating folder ${dir}. ${err}`);
+		} else {
+			asyncDownload(board, imageList);
 		}
 	});
-	
-	asyncDownload(board, imageList);
 } else {
 	console.log(`Couldn't find specified board "${board}" or thread id "${thread}"`);
 }
