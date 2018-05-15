@@ -1,0 +1,16 @@
+{
+  "name": "4chan_image_downloader",
+  "version": "1.0.0",
+  "description": "An application for downloading all images from 4chan thread",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.15.1",
+    "mkdirp": "^0.5.1",
+    "request": "^2.85.0"
+  }
+}
